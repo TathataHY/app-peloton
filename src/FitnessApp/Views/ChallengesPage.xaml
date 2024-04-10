@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FitnessApp.Views.ChallengesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:FitnessApp.Controls"
+    xmlns:converters="clr-namespace:FitnessApp.Converters"
+    xmlns:helpers="clr-namespace:FitnessApp.Helpers"
+    xmlns:viewmodels="clr-namespace:FitnessApp.ViewModels"
+    x:DataType="viewmodels:ChallengesViewModel"
+    BackgroundColor="{StaticResource Background}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ChallengesViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CategoryIcon" TargetType="Label">
+                <Setter Property="FontFamily" Value="FASolid" />
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="CategoryTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <converters:SelectedIndexColorConverter x:Key="SelectedIndexColorConverter" />
+            <converters:SelectedIndexVisibleConverter x:Key="SelectedIndexVisibleConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid
+                Padding="16,20,16,25"
+                BackgroundColor="{StaticResource CardBackground}"
+                ColumnDefinitions="*,*,*">
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}" CommandParameter="0" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Style="{StaticResource CategoryIcon}"
+                        Text="{x:Static helpers:FAIcons.Trophy}"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='0'}" />
+                    <Label
+                        Style="{StaticResource CategoryTitle}"
+                        Text="Active"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='0'}" />
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}" CommandParameter="1" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Style="{StaticResource CategoryIcon}"
+                        Text="{x:Static helpers:FAIcons.AngleDoubleUp}"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='1'}" />
+                    <Label
+                        Style="{StaticResource CategoryTitle}"
+                        Text="Upcoming"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='1'}" />
+                </StackLayout>
+                <StackLayout Grid.Column="2">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}" CommandParameter="2" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Style="{StaticResource CategoryIcon}"
+                        Text="{x:Static helpers:FAIcons.Award}"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='2'}" />
+                    <Label
+                        Style="{StaticResource CategoryTitle}"
+                        Text="Completed"
+                        TextColor="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexColorConverter}, ConverterParameter='2'}" />
+                </StackLayout>
+            </Grid>
+            <controls:ActiveChallengesView IsVisible="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexVisibleConverter}, ConverterParameter='0'}" />
+            <controls:CompletedChallengesControl IsVisible="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexVisibleConverter}, ConverterParameter='2'}" />
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FitnessApp.Controls.CompletedChallengesControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:FitnessApp.Helpers">
+    <ContentView.Content>
+        <StackLayout>
+            <CollectionView ItemsLayout="VerticalList" VerticalOptions="Start">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Item One</x:String>
+                        <x:String>Item Two</x:String>
+                        <x:String>Item Three</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="20,7">
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="{StaticResource CardBackground}"
+                                CornerRadius="8"
+                                HasShadow="True">
+                                <Grid RowDefinitions="*,Auto">
+                                    <StackLayout Padding="20" HeightRequest="80">
+                                        <StackLayout.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Offset="0.1" Color="#8A2387" />
+                                                <GradientStop Offset="0.6" Color="#E94057" />
+                                                <GradientStop Offset="1.0" Color="#F27121" />
+                                            </LinearGradientBrush>
+                                        </StackLayout.Background>
+                                        <Label Text="ENDED 12/31/2020" TextColor="White" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="Holiday Activity Challenge"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Padding="15,10,15,15"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="Earned Gift 3"
+                                            TextColor="{StaticResource TextPrimary}" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text=" · "
+                                            TextColor="{StaticResource TextSecondary}" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="29 days"
+                                            TextColor="{StaticResource TextSecondary}" />
+                                    </StackLayout>
+
+                                    <Image
+                                        Grid.RowSpan="2"
+                                        Margin="15,10"
+                                        HeightRequest="86"
+                                        HorizontalOptions="End"
+                                        Source="medal.png"
+                                        VerticalOptions="End"
+                                        WidthRequest="86">
+                                        <Image.Clip>
+                                            <EllipseGeometry
+                                                Center="43,43"
+                                                RadiusX="41"
+                                                RadiusY="41" />
+                                        </Image.Clip>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
