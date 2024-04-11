@@ -21,7 +21,8 @@
                                 Padding="0"
                                 BackgroundColor="{StaticResource CardBackground}"
                                 CornerRadius="8"
-                                HasShadow="True">
+                                HasShadow="True"
+                                IsClippedToBounds="True">
                                 <Grid RowDefinitions="*,Auto">
                                     <StackLayout Padding="20" HeightRequest="80">
                                         <StackLayout.Background>

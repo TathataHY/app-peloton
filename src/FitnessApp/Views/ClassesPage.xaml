@@ -1,12 +1,181 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FitnessApp.Views.ClassesPage">
+<ContentPage
+    x:Class="FitnessApp.Views.ClassesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:FitnessApp.Helpers"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TabViewItemStyle" TargetType="xct:TabViewItem">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+                <Setter Property="TextColorSelected" Value="{StaticResource Accent}" />
+            </Style>
+
+            <ControlTemplate x:Key="TabItemTemplate">
+                <Grid
+                    RowDefinitions="Auto,Auto"
+                    RowSpacing="0"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="6"
+                        HeightRequest="36"
+                        HorizontalOptions="Center"
+                        Source="{TemplateBinding CurrentIcon}"
+                        VerticalOptions="Center"
+                        WidthRequest="36" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="{TemplateBinding FontSize}"
+                        HorizontalOptions="Center"
+                        Text="{TemplateBinding Text}"
+                        TextColor="{TemplateBinding CurrentTextColor}" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <xct:TabView
+                TabContentBackgroundColor="{StaticResource Background}"
+                TabStripBackgroundColor="{StaticResource CardBackground}"
+                TabStripHeight="85"
+                TabStripPlacement="Top">
+
+                <xct:TabViewItem
+                    ControlTemplate="{StaticResource TabItemTemplate}"
+                    Style="{StaticResource TabViewItemStyle}"
+                    Text="Classes">
+                    <xct:TabViewItem.Icon>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.PlayCircle}"
+                            Color="{StaticResource TextSecondary}" />
+                    </xct:TabViewItem.Icon>
+                    <xct:TabViewItem.IconSelected>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.PlayCircle}"
+                            Color="{StaticResource Accent}" />
+                    </xct:TabViewItem.IconSelected>
+                    <Grid Margin="0,40,0,0">
+                        <CollectionView>
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Strength</x:String>
+                                    <x:String>Yoga</x:String>
+                                    <x:String>Cardio</x:String>
+                                    <x:String>Meditation</x:String>
+                                    <x:String>Outdoor</x:String>
+                                    <x:String>Cycling</x:String>
+                                    <x:String>Stretching</x:String>
+                                    <x:String>Tread Bootcamp</x:String>
+                                    <x:String>Bike Bootcamp</x:String>
+                                    <x:String>Walking</x:String>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10,5" HeightRequest="150">
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="Black"
+                                            CornerRadius="8"
+                                            HasShadow="False"
+                                            IsClippedToBounds="True">
+                                            <Grid ColumnDefinitions="*,*">
+                                                <Label
+                                                    Margin="36,0"
+                                                    FontSize="Medium"
+                                                    LineBreakMode="WordWrap"
+                                                    Text="{Binding .}"
+                                                    TextColor="White"
+                                                    VerticalTextAlignment="Center" />
+                                                <Image Grid.Column="1" />
+                                            </Grid>
+                                        </Frame>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    ControlTemplate="{StaticResource TabItemTemplate}"
+                    Style="{StaticResource TabViewItemStyle}"
+                    Text="Programs">
+                    <xct:TabViewItem.Icon>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.Clone}"
+                            Color="{StaticResource TextSecondary}" />
+                    </xct:TabViewItem.Icon>
+                    <xct:TabViewItem.IconSelected>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.Clone}"
+                            Color="{StaticResource Accent}" />
+                    </xct:TabViewItem.IconSelected>
+                    <Grid>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="TabContent2"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    ControlTemplate="{StaticResource TabItemTemplate}"
+                    Style="{StaticResource TabViewItemStyle}"
+                    Text="Collections">
+                    <xct:TabViewItem.Icon>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.WindowRestore}"
+                            Color="{StaticResource TextSecondary}" />
+                    </xct:TabViewItem.Icon>
+                    <xct:TabViewItem.IconSelected>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.WindowRestore}"
+                            Color="{StaticResource Accent}" />
+                    </xct:TabViewItem.IconSelected>
+                    <Grid>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="TabContent2"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </xct:TabViewItem>
+
+                <xct:TabViewItem
+                    ControlTemplate="{StaticResource TabItemTemplate}"
+                    Style="{StaticResource TabViewItemStyle}"
+                    Text="Schedule">
+                    <xct:TabViewItem.Icon>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.Calendar}"
+                            Color="{StaticResource TextSecondary}" />
+                    </xct:TabViewItem.Icon>
+                    <xct:TabViewItem.IconSelected>
+                        <FontImageSource
+                            FontFamily="FARegular"
+                            Glyph="{x:Static helpers:FAIcons.Calendar}"
+                            Color="{StaticResource Accent}" />
+                    </xct:TabViewItem.IconSelected>
+                    <Grid>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="TabContent2"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
