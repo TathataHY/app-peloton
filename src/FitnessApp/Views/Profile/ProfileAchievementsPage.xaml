@@ -13,6 +13,7 @@
                 TextColor="Black"
                 VerticalOptions="CenterAndExpand" />
             <Line
+                Margin="{OnPlatform Android='0,0,16,0'}"
                 BackgroundColor="Gray"
                 HeightRequest="1"
                 HorizontalOptions="FillAndExpand" />

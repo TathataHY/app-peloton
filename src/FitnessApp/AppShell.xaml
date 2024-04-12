@@ -29,7 +29,7 @@
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="FlyoutItem" />
         </ResourceDictionary>
     </Shell.Resources>
-    <TabBar>
+    <TabBar Route="MainTabs">
         <Tab
             Title="Featured"
             Route="FeaturedPage"

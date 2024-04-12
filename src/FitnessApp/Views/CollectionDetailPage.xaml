@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="FitnessApp.Views.Profile.ProfileWorkoutsPage"
+    x:Class="FitnessApp.Views.CollectionDetailPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:helpers="clr-namespace:FitnessApp.Helpers"
     xmlns:models="clr-namespace:FitnessApp.Models"
-    xmlns:viewmodels="clr-namespace:FitnessApp.ViewModels"
-    BackgroundColor="{StaticResource Background}">
-
-    <ContentPage.BindingContext>
-        <viewmodels:ProfileWorkoutsViewModel />
-    </ContentPage.BindingContext>
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False">
 
     <Shell.TitleView>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
             <Label
+                Margin="0,6,24,0"
                 FontSize="Medium"
-                HorizontalOptions="CenterAndExpand"
-                Text="Tathata"
-                TextColor="Black"
-                VerticalOptions="CenterAndExpand" />
-            <Line
-                Margin="{OnPlatform Android='0,0,16,0'}"
-                BackgroundColor="Gray"
-                HeightRequest="1"
-                HorizontalOptions="FillAndExpand" />
+                HorizontalTextAlignment="Center"
+                Text="Yoga: Foundation"
+                TextColor="{StaticResource TextPrimary}" />
+            <Label
+                Margin="0,0,24,0"
+                FontSize="Small"
+                HorizontalTextAlignment="Center"
+                Text="YOGA • 13 CLASSES"
+                TextColor="{StaticResource TextSecondary}" />
         </StackLayout>
     </Shell.TitleView>
 
     <ContentPage.Content>
-        <CollectionView>
+        <CollectionView BackgroundColor="Transparent">
             <CollectionView.ItemsSource>
                 <x:Array Type="{x:Type models:FinishedWorkout}">
                     <models:FinishedWorkout
@@ -82,19 +82,96 @@
                         RideLocation="App" />
                 </x:Array>
             </CollectionView.ItemsSource>
-
             <CollectionView.Header>
-                <StackLayout Padding="0,20,0,5">
+                <Grid RowDefinitions="Auto,Auto,Auto,*">
+                    <Image Source="collection1.png" />
                     <Label
-                        Margin="{OnIdiom Phone='24,0',
-                                         Tablet='100,0'}"
-                        FontAttributes="Bold"
+                        Grid.Row="1"
+                        Margin="14,12"
                         FontSize="Small"
-                        Text="80 WORKOUTS"
-                        TextColor="{StaticResource TextPrimary}" />
-                </StackLayout>
+                        HorizontalTextAlignment="Center"
+                        LineHeight="1.3"
+                        Text="Build a solid yoga practice from the mat up in the Foundations of Yoga. With a mix of core poses and traditional flow-style classes, learn how yoga can go beyond a physical practice to help you be the best version of yourself."
+                        TextColor="{StaticResource TextSecondary}" />
+                    <ScrollView
+                        Grid.Row="2"
+                        Margin="0,12,0,0"
+                        HorizontalScrollBarVisibility="Never"
+                        Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <BindableLayout.ItemsSource>
+                                <x:Array Type="{x:Type models:Instructor}">
+                                    <models:Instructor
+                                        FirstName="Chelsea"
+                                        Image="ally.png"
+                                        LastName="Jackson Roberts" />
+                                    <models:Instructor
+                                        FirstName="Aditi"
+                                        Image="hannah.png"
+                                        LastName="Shah" />
+                                    <models:Instructor
+                                        FirstName="Alex"
+                                        Image="alex.png"
+                                        LastName="Toussaint" />
+                                    <models:Instructor
+                                        FirstName="Alex"
+                                        Image="alex.png"
+                                        LastName="Toussaint" />
+                                </x:Array>
+                            </BindableLayout.ItemsSource>
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:Instructor">
+                                    <Grid
+                                        Padding="18,0"
+                                        ColumnDefinitions="Auto,Auto"
+                                        RowDefinitions="Auto,Auto"
+                                        RowSpacing="0">
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding Image}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40">
+                                            <Image.Clip>
+                                                <EllipseGeometry
+                                                    Center="20,20"
+                                                    RadiusX="19"
+                                                    RadiusY="19" />
+                                            </Image.Clip>
+                                        </Image>
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding FirstName}"
+                                            VerticalOptions="End" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding LastName}"
+                                            VerticalOptions="Start" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout
+                        Grid.Row="3"
+                        Padding="0,124,0,12"
+                        VerticalOptions="EndAndExpand">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="VIEW COLLECTION"
+                            TextColor="{StaticResource TextPrimary}" />
+                        <Label
+                            FontFamily="FASolid"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="{x:Static helpers:FAIcons.ChevronDown}"
+                            TextColor="{StaticResource TextPrimary}" />
+                    </StackLayout>
+                </Grid>
             </CollectionView.Header>
-
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="0,4">
@@ -126,32 +203,27 @@
                                     Spacing="2"
                                     VerticalOptions="Center">
                                     <Label
-                                        FontAttributes="Bold"
                                         FontSize="Small"
                                         Text="{Binding Name}"
                                         TextColor="{StaticResource TextPrimary}" />
                                     <StackLayout Orientation="Horizontal">
 
                                         <Label
-                                            FontAttributes="Bold"
                                             FontSize="Micro"
                                             Text="{Binding Instructor}"
                                             TextColor="{StaticResource TextPrimary}" />
                                         <Label
-                                            FontAttributes="Bold"
                                             FontSize="Micro"
                                             Text="  • "
                                             TextColor="{StaticResource TextPrimary}"
                                             VerticalTextAlignment="Center" />
 
                                         <Label
-                                            FontAttributes="Bold"
                                             FontSize="Micro"
                                             Text="{Binding ActivityType}"
                                             TextColor="{StaticResource TextPrimary}" />
                                     </StackLayout>
                                     <Label
-                                        FontAttributes="Bold"
                                         FontSize="Micro"
                                         Text="{Binding AiredDate}"
                                         TextColor="{StaticResource TextPrimary}" />
@@ -162,11 +234,7 @@
                                     Margin="0,0,6,0"
                                     FontFamily="FASolid"
                                     Text="{x:Static helpers:FAIcons.EllipsisV}"
-                                    VerticalOptions="Center">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProfileWorkoutsViewModel}}, Path=WorkoutOptionsCommand}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                    VerticalOptions="Center" />
                                 <BoxView
                                     Grid.Row="1"
                                     Grid.ColumnSpan="3"
@@ -176,7 +244,6 @@
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
                                     Margin="8,4"
-                                    FontAttributes="Bold"
                                     FontSize="Micro"
                                     Text="{Binding FinishedDate}"
                                     TextColor="{StaticResource TextPrimary}"
@@ -186,7 +253,6 @@
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     Margin="8,4"
-                                    FontAttributes="Bold"
                                     FontSize="Micro"
                                     HorizontalOptions="End"
                                     Text="{Binding RideLocation}"

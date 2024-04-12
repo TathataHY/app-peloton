@@ -15,8 +15,21 @@
 		<None Remove="Resources\Fonts\FASolid.otf" />
 		<None Remove="Resources\Images\alex.png" />
 		<None Remove="Resources\Images\ally.png" />
+		<None Remove="Resources\Images\collection1.png" />
+		<None Remove="Resources\Images\collection2.png" />
 		<None Remove="Resources\Images\hannah.png" />
+		<None Remove="Resources\Images\james.jpg" />
 		<None Remove="Resources\Images\medal.png" />
+		<None Remove="Resources\Images\program1.png" />
+		<None Remove="Resources\Images\program2.png" />
+		<None Remove="Resources\Images\strength.png" />
+		<None Remove="Resources\Images\workout1.png" />
+		<None Remove="Resources\Images\workout2.png" />
+		<None Remove="Resources\Images\workout3.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <SharedImage Include="Resources\Images\workout3.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -41,22 +54,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <SharedImage Include="Resources\Images\collection1.png" BaseSize="431,245" />
+	  <SharedImage Include="Resources\Images\collection2.png" BaseSize="431,245" />
 	  <SharedImage Include="Resources\Images\hannah.png" BaseSize="80,80" />
 	  <SharedImage Include="Resources\Images\alex.png" BaseSize="80,80" />
 	  <SharedImage Include="Resources\Images\ally.png" BaseSize="80,80" />
+	  <SharedImage Include="Resources\Images\james.jpg" BaseSize="100,100" />
 	  <SharedImage Include="Resources\Images\medal.png" BaseSize="86,86" />
+	  <SharedImage Include="Resources\Images\program1.png" BaseSize="431,245" />
+	  <SharedImage Include="Resources\Images\program2.png" BaseSize="431,245" />
+	  <SharedImage Include="Resources\Images\strength.png" BaseSize="585,252" />
+	  <SharedImage Include="Resources\Images\workout1.png" BaseSize="585,252" />
+	  <SharedImage Include="Resources\Images\workout2.png" BaseSize="585,252" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Views\Profile\ProfileAchievementsPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Profile\ProfileOverviewPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Profile\ProfileWorkoutsPage.xaml">
+	  <EmbeddedResource Update="Views\CollectionDetailPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
 
-</Project>
+</Project> 
