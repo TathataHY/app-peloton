@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FitnessApp.Views.Profile.ProfileAchievementsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Shell.TitleView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="CenterAndExpand"
+                Text="Tathata"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+            <Line
+                BackgroundColor="Gray"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

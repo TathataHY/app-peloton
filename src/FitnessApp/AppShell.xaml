@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:helpers="clr-namespace:FitnessApp.Helpers"
     xmlns:local="clr-namespace:FitnessApp.Views"
+    xmlns:profile="clr-namespace:FitnessApp.Views.Profile"
     Title="FitnessApp">
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -14,11 +15,11 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.ForegroundColor" Value="White" />
-                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource TabBarBackground}" />
+                <Setter Property="Shell.ForegroundColor" Value="Black" />
+                <Setter Property="Shell.TitleColor" Value="Black" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="Gray" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBarBackground}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TabBarUnselected}" />
@@ -59,11 +60,13 @@
         <Tab
             Title="Profile"
             Route="ProfilePage"
-            Shell.NavBarIsVisible="False">
+            Shell.NavBarIsVisible="True">
             <Tab.Icon>
                 <FontImageSource FontFamily="FASolid" Glyph="{x:Static helpers:FAIcons.User}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+            <ShellContent Title="OVERVIEW" ContentTemplate="{DataTemplate profile:ProfileOverviewPage}" />
+            <ShellContent Title="WORKOUTS" ContentTemplate="{DataTemplate profile:ProfileWorkoutsPage}" />
+            <ShellContent Title="ACHIEVEMENTS" ContentTemplate="{DataTemplate profile:ProfileAchievementsPage}" />
         </Tab>
         <Tab
             Title="More"
